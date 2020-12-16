@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,15 +15,54 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="ARView" customClass="ARView" customModule="RealityKit">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LL5-S7-xgZ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="103.5"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fnz-xH-bnh">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="103.5"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDt-MM-kr6">
+                                            <rect key="frame" x="20" y="64" width="374" height="19.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="iDt-MM-kr6" secondAttribute="trailing" constant="20" id="RQ3-FF-lTI"/>
+                                        <constraint firstAttribute="bottom" secondItem="iDt-MM-kr6" secondAttribute="bottom" constant="20" id="eKN-iH-6p3"/>
+                                        <constraint firstItem="iDt-MM-kr6" firstAttribute="leading" secondItem="fnz-xH-bnh" secondAttribute="leading" constant="20" id="wiC-ic-JNN"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <constraints>
+                            <constraint firstItem="LL5-S7-xgZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="P0D-wG-2Kq"/>
+                            <constraint firstItem="LL5-S7-xgZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hE5-4z-i7q"/>
+                            <constraint firstItem="iDt-MM-kr6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="i66-hu-CnW"/>
+                            <constraint firstAttribute="trailing" secondItem="LL5-S7-xgZ" secondAttribute="trailing" id="qNi-qz-bzp"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="lg9-uz-Ahh" appends="YES" id="B6c-Ug-ZAf"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="arView" destination="8bC-Xf-vdC" id="hvU-Ek-za3"/>
+                        <outlet property="warningLabel" destination="iDt-MM-kr6" id="zv8-uD-sNq"/>
+                        <outlet property="warningView" destination="LL5-S7-xgZ" id="txN-85-igG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="lg9-uz-Ahh">
+                    <connections>
+                        <action selector="arViewTapped:" destination="BYZ-38-t0r" id="3mX-HS-C1n"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="136.23188405797103" y="133.25892857142856"/>
         </scene>
